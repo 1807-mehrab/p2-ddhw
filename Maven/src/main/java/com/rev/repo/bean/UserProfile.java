@@ -1,8 +1,12 @@
 package com.rev.repo.bean;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -10,10 +14,13 @@ import javax.persistence.Table;
 public class UserProfile {
 
 	@Id
-	@Column(name="USERID")
-	private String userid;
+	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="USERID")
+	private UserInfo user;
+	
 	@Column(name="USERPASS")
 	private String userpass;
+	
 	@Column(name="ADMIN")
 	private int adminInt;
 	
@@ -24,12 +31,12 @@ public class UserProfile {
 
 	@Override
 	public String toString() {
-		return "UserProfile [userid=" + userid + ", userpass=" + userpass + ", admin=" + this.isAdmin() + "]";
+		return "UserProfile [userid=" + user.getUserId() + ", userpass=" + userpass + ", admin=" + this.isAdmin() + "]";
 	}
 
-	public UserProfile(String userid, String userpass, int adminInt) {
+	public UserProfile(UserInfo user, String userpass, int adminInt) {
 		super();
-		this.userid = userid;
+		this.user = user;
 		this.userpass = userpass;
 		this.adminInt = adminInt;
 	}
@@ -39,12 +46,12 @@ public class UserProfile {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getUserid() {
-		return userid;
+	public UserInfo getUser() {
+		return user;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setUserid(UserInfo user) {
+		this.user = user;
 	}
 
 	public String getUserpass() {

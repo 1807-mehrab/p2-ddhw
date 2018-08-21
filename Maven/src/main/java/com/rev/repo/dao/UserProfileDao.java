@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.rev.repo.bean.UserInfo;
 import com.rev.repo.bean.UserProfile;
 
 @Transactional
@@ -18,11 +19,13 @@ public class UserProfileDao {
 		this.sessionFactory = sessionFactory;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<UserProfile> getUserProfile() {
 		Session s = sessionFactory.getCurrentSession();
 		return s.createQuery("from UserProfile").list();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public UserProfile getUserProfile(String userId) {
 		Session s = sessionFactory.getCurrentSession();
 		UserProfile ui = null;
@@ -35,8 +38,8 @@ public class UserProfileDao {
 		return ui;
 	}
 	
-	public void newUserProfile(String userId, String email, int adminInt) {
+	public void newUserProfile(UserInfo user, String email, int adminInt) {
 		Session s = sessionFactory.getCurrentSession();
-		s.save(new UserProfile(userId, email, adminInt));
+		s.save(new UserProfile(user, email, adminInt));
 	}
 }

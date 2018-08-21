@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.rev.repo.bean.UserInfo;
 import com.rev.repo.bean.UserProfile;
 import com.rev.repo.dao.UserProfileDao;
 
@@ -29,7 +30,7 @@ public class UserProfileService {
 	}
 	
 	@Transactional
-	public void newUserProfile(String userId, String email, int adminInt) {
-		dao.newUserProfile(userId, email, adminInt);
+	public void newUserProfile(UserInfo user, String email, int adminInt) {
+		dao.newUserProfile(user, email, adminInt);
 	}
 }
