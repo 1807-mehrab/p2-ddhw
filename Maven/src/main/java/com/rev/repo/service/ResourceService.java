@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.rev.repo.bean.Reply;
 import com.rev.repo.bean.Resource;
-import com.rev.repo.bean.Topic;
 import com.rev.repo.dao.ResourceDao;
 
 @Service
@@ -19,17 +17,12 @@ public class ResourceService {
 	}
 	
 	@Transactional
-	public Resource getResource(Topic t) {
-		return dao.getResource(t);
-	}
-	
-	@Transactional
-	public Resource getResource(Reply rpl) {
-		return dao.getResource(rpl);
-	}
-	
-	@Transactional
 	public void newResource(Resource r) {
 		dao.newResource(r);
+	}
+	
+	@Transactional 
+	public Resource getResource(int id) {
+		return dao.getResource(id);
 	}
 }

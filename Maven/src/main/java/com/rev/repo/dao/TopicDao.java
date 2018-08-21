@@ -7,7 +7,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.rev.repo.bean.Resource;
 import com.rev.repo.bean.Topic;
+import com.rev.repo.bean.UserProfile;
 
 @Transactional
 @Repository
@@ -18,16 +20,19 @@ public class TopicDao {
 		this.sessionFactory = sessionFactory;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Topic> getTopics() {
 		Session s = sessionFactory.getCurrentSession();
 		return s.createQuery("from Topic").list();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Topic> getTopics(String userId) {
 		Session s = sessionFactory.getCurrentSession();
 		return s.createQuery("from Topic where USERID = :id").setString("id", userId).list();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Topic getTopic(int topicId) {
 		Session s = sessionFactory.getCurrentSession();
 		Topic t = null;
@@ -40,8 +45,8 @@ public class TopicDao {
 		return t;
 	}
 
-	public void newTopic(int topicId, String userId, int contentId, String topicLine) {
+	public void newTopic(int topicId, UserProfile user, Resource content, String topicLine) {
 		Session s = sessionFactory.getCurrentSession();
-		s.save(new Topic(topicId, userId, contentId, topicLine));
+		s.save(new Topic(topicId, user, content, topicLine));
 	}
 }

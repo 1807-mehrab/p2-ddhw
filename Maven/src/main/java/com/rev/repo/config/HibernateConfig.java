@@ -59,6 +59,11 @@ public class HibernateConfig {
 
 	Properties hibernateProperties() {
 		return new Properties() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			{
 				setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
 				setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));

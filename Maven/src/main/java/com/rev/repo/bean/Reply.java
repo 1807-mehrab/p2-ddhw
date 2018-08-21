@@ -1,8 +1,13 @@
 package com.rev.repo.bean;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,25 +16,31 @@ public class Reply {
 	@Id
 	@Column(name = "REPLYID")
 	private int replyId;
-	@Column(name = "TOPICID")
-	private int topicId;
-	@Column(name = "USERID")
-	private String userId;
+	
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name = "TOPICID")
+	private Topic topic;
+	
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name = "USERID")
+	private UserProfile user;
+	
+	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@Column(name = "CONTENTID")
-	private int contentId;
+	private Resource content;
 
 	@Override
 	public String toString() {
-		return "Reply [replyId=" + replyId + ", topicId=" + topicId + ", userId=" + userId + ", contentId=" + contentId
+		return "Reply [replyId=" + replyId + ", topicId=" + topic.getTopicId() + ", userId=" + user.getUser().getUserId() + ", contentId=" + content.getContentId()
 				+ "]";
 	}
 
-	public Reply(int replyId, int topicId, String userId, int contentId) {
+	public Reply(int replyId, Topic topic, UserProfile user, Resource content) {
 		super();
 		this.replyId = replyId;
-		this.topicId = topicId;
-		this.userId = userId;
-		this.contentId = contentId;
+		this.topic = topic;
+		this.user = user;
+		this.content = content;
 	}
 
 	public Reply() {
@@ -45,28 +56,28 @@ public class Reply {
 		this.replyId = replyId;
 	}
 
-	public int getTopicId() {
-		return topicId;
+	public Topic getTopicId() {
+		return topic;
 	}
 
-	public void setTopicId(int topicId) {
-		this.topicId = topicId;
+	public void setTopic(Topic topic) {
+		this.topic = topic;
 	}
 
-	public String getUserId() {
-		return userId;
+	public UserProfile getUserId() {
+		return user;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserId(UserProfile user) {
+		this.user = user;
 	}
 
-	public int getContentId() {
-		return contentId;
+	public Resource getContent() {
+		return content;
 	}
 
-	public void setContentId(int contentId) {
-		this.contentId = contentId;
+	public void setContent(Resource content) {
+		this.content = content;
 	}
 
 }

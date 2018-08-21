@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.rev.repo.bean.Resource;
 import com.rev.repo.bean.Topic;
+import com.rev.repo.bean.UserProfile;
 import com.rev.repo.dao.TopicDao;
 
 @Service
@@ -34,7 +36,7 @@ public class TopicService {
 	}
 	
 	@Transactional
-	public void newTopic(int topicId, String userId, int contentId, String topicLine) {
-		dao.newTopic(topicId, userId, contentId, topicLine);
+	public void newTopic(int topicId, UserProfile user, Resource content, String topicLine) {
+		dao.newTopic(topicId, user, content, topicLine);
 	}
 }
