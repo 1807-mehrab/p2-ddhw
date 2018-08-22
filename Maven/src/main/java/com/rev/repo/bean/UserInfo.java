@@ -10,18 +10,18 @@ import javax.persistence.Table;
 public class UserInfo {
 	@Id
 	@Column(name="USERID")
-	private String userId;
+	private UserProfile  user;
 	@Column(name="EMAIL")
 	private String email;
 	
 	@Override
 	public String toString() {
-		return "UserInfo [userId=" + userId + ", email=" + email + "]";
+		return "UserInfo [userId=" + getUserId() + ", email=" + email + "]";
 	}
 	
-	public UserInfo(String userId, String email) {
+	public UserInfo(UserProfile userId, String email) {
 		super();
-		this.userId = userId;
+		this.user = userId;
 		this.email = email;
 	}
 
@@ -30,12 +30,12 @@ public class UserInfo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getUserId() {
-		return userId;
+	public UserProfile getUserId() {
+		return user;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserId(UserProfile userId) {
+		this.user = userId;
 	}
 
 	public String getEmail() {
