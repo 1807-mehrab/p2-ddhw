@@ -10,28 +10,30 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USERPROFILE")
+@Table(name = "USERPROFILE")
 public class UserProfile {
 
 	@Id
-	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinColumn(name="USERID")
-	private UserInfo user;
-	
-	@Column(name="USERPASS")
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "USERID")
+	private String user;
+
+	@Column(name = "USERPASS")
 	private String userpass;
-	
-	@Column(name="ADMIN")
+
+	@Column(name = "ADMIN")
 	private int adminInt;
-	
+
 	public boolean isAdmin() {
-		if (adminInt == 0) return false;
-		else return true;
+		if (adminInt == 0)
+			return false;
+		else
+			return true;
 	}
 
 	@Override
 	public String toString() {
-		return "UserProfile [userid=" + user.getUserId() + ", userpass=" + userpass + ", admin=" + this.isAdmin() + "]";
+		return "UserProfile [user=" + user + ", userpass=" + userpass + ", adminInt=" + adminInt + "]";
 	}
 
 	public UserProfile(UserLogin ul) {
@@ -46,11 +48,11 @@ public class UserProfile {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserInfo getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUserid(UserInfo user) {
+	public void setUserId(String user) {
 		this.user = user;
 	}
 
@@ -58,7 +60,7 @@ public class UserProfile {
 		return userpass;
 	}
 
-	public void setUserpass(String userpass) {
+	public void setUserPass(String userpass) {
 		this.userpass = userpass;
 	}
 
@@ -69,7 +71,9 @@ public class UserProfile {
 	public void setAdminInt(int adminInt) {
 		this.adminInt = adminInt;
 	}
-	
-	
-	
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
 }

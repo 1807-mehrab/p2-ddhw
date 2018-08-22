@@ -24,8 +24,8 @@ public class UserProfileService {
 	}
 	
 	@Transactional
-	public UserProfile getOne(String userId) {
-		return dao.getUserProfile(userId);
+	public UserProfile getOne(UserProfile user_get) {
+		return dao.getUserProfile(user_get.getUser());
 	}
 	
 	@Transactional
