@@ -7,9 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.rev.repo.bean.Resource;
 import com.rev.repo.bean.Topic;
-import com.rev.repo.bean.UserProfile;
 
 @Transactional
 @Repository
@@ -45,8 +43,9 @@ public class TopicDao {
 		return t;
 	}
 
-	public void newTopic(int topicId, UserProfile user, Resource content, String topicLine) {
+	public Topic newTopic(Topic t) {
 		Session s = sessionFactory.getCurrentSession();
-		s.save(new Topic(topicId, user, content, topicLine));
+		s.save(t);
+		return t;
 	}
 }

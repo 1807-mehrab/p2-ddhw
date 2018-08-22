@@ -32,6 +32,9 @@ public class Topic {
 	
 	@Column(name = "TOPICLINE")
 	private String topicLine;
+	
+	@Column(name = "TOPICFLAG")
+	private int flag;
 
 	@Override
 	public String toString() {
@@ -39,17 +42,22 @@ public class Topic {
 				+ topicLine + "]";
 	}
 
-	public Topic(int topicId, UserProfile user, Resource content, String topicLine) {
+	public Topic(int topicId, UserProfile user, Resource content, String topicLine, int flag) {
 		super();
 		this.topicId = topicId;
 		this.user = user;
 		this.content = content;
 		this.topicLine = topicLine;
+		this.flag = flag;
 	}
 
 	public Topic() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public boolean isFlagged() {
+		return flag > 0;
 	}
 
 	public int getTopicId() {
@@ -84,5 +92,7 @@ public class Topic {
 		this.topicLine = topicLine;
 	}
 
-	
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
 }

@@ -37,8 +37,9 @@ public class UserInfoDao {
 		return ui;
 	}
 	
-	public void newUserInfo(String userId, String email) {
+	public UserInfo newUserInfo(UserInfo ui) {
 		Session s = sessionFactory.getCurrentSession();
-		s.save(new UserInfo(userId, email));
+		s.save(ui);
+		return ui;
 	}
 }
