@@ -16,36 +16,44 @@ public class Reply {
 	@Id
 	@Column(name = "REPLYID")
 	private int replyId;
-	
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "TOPICID")
 	private Topic topic;
-	
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "USERID")
 	private UserProfile user;
-	
-	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Column(name = "CONTENTID")
 	private Resource content;
 
+	@Column(name = "REPLYFLAG")
+	private int flag;
+
 	@Override
 	public String toString() {
-		return "Reply [replyId=" + replyId + ", topicId=" + topic.getTopicId() + ", userId=" + user.getUser().getUserId() + ", contentId=" + content.getContentId()
-				+ "]";
+		return "Reply [replyId=" + replyId + ", topicId=" + topic.getTopicId() + ", userId="
+				+ user.getUser().getUserId() + ", contentId=" + content.getContentId() + "]";
 	}
 
-	public Reply(int replyId, Topic topic, UserProfile user, Resource content) {
+	public Reply(int replyId, Topic topic, UserProfile user, Resource content, int flag) {
 		super();
 		this.replyId = replyId;
 		this.topic = topic;
 		this.user = user;
 		this.content = content;
+		this.flag = flag;
 	}
 
 	public Reply() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public boolean isFlagged() {
+		return flag > 0;
 	}
 
 	public int getReplyId() {
@@ -80,4 +88,7 @@ public class Reply {
 		this.content = content;
 	}
 
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
 }

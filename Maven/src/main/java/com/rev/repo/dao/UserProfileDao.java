@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.rev.repo.bean.UserInfo;
 import com.rev.repo.bean.UserProfile;
 
 @Transactional
@@ -38,8 +37,10 @@ public class UserProfileDao {
 		return ui;
 	}
 	
-	public void newUserProfile(UserInfo user, String email, int adminInt) {
+	public UserProfile newUserProfile(UserProfile up) {
 		Session s = sessionFactory.getCurrentSession();
-		s.save(new UserProfile(user, email, adminInt));
+		s.save(up);
+		return up;
 	}
+	
 }

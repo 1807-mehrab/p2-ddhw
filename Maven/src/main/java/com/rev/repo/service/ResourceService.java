@@ -17,8 +17,8 @@ public class ResourceService {
 	}
 	
 	@Transactional
-	public void newResource(Resource r) {
-		dao.newResource(r);
+	public Resource newResource(Resource r) {
+		return dao.newResource(r);
 	}
 	
 	@Transactional 

@@ -34,11 +34,11 @@ public class UserProfile {
 		return "UserProfile [userid=" + user.getUserId() + ", userpass=" + userpass + ", admin=" + this.isAdmin() + "]";
 	}
 
-	public UserProfile(UserInfo user, String userpass, int adminInt) {
+	public UserProfile(UserLogin ul) {
 		super();
-		this.user = user;
-		this.userpass = userpass;
-		this.adminInt = adminInt;
+		this.user = ul.getUser();
+		this.userpass = ul.getUserpass();
+		this.adminInt = ul.getAdminInt();
 	}
 
 	public UserProfile() {
