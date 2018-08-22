@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.rev.repo.bean.Topic;
+import com.rev.repo.bean.UserProfile;
 import com.rev.repo.dao.TopicDao;
 
 @Service
@@ -24,17 +25,13 @@ public class TopicService {
 	}
 	
 	@Transactional
-	public List<Topic> getAll(String userId) {
-		return dao.getTopics(userId);
-	}
-	
-	@Transactional
-	public Topic getOne(int topicId) {
-		return dao.getTopic(topicId);
+	public List<Topic> getUserAll(UserProfile user) {
+		return dao.getTopics(user.getUser());
 	}
 	
 	@Transactional
 	public Topic newTopic(Topic t) {
 		return dao.newTopic(t);
 	}
+	
 }
