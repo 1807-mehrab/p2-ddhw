@@ -38,7 +38,7 @@ public class Topic {
 
 	@Override
 	public String toString() {
-		return "Topic [topicId=" + topicId + ", userId=" + user.getUser().getUserId() + ", contentId=" + content.getContentId() + ", topicLine="
+		return "Topic [topicId=" + topicId + ", userId=" + user.getUser() + ", contentId=" + content.getContentId() + ", topicLine="
 				+ topicLine + "]";
 	}
 
