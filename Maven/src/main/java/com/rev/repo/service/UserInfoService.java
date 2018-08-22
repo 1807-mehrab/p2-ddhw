@@ -29,7 +29,7 @@ public class UserInfoService {
 	}
 	
 	@Transactional
-	public void newUserInfo(String userId, String email) {
-		dao.newUserInfo(userId, email);
+	public UserInfo newUserInfo(UserInfo ui) {
+		return dao.newUserInfo(ui);
 	}
 }

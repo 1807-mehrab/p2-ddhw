@@ -7,9 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.rev.repo.bean.Reply;
-import com.rev.repo.bean.Resource;
-import com.rev.repo.bean.Topic;
-import com.rev.repo.bean.UserProfile;
 import com.rev.repo.dao.ReplyDao;
 
 @Service
@@ -27,7 +24,7 @@ public class ReplyService {
 	}
 	
 	@Transactional
-	public void newReply(int replyId, Topic topic, UserProfile user, Resource content) {
-		dao.newReply(replyId, topic, user, content);
+	public Reply newReply(Reply r) {
+		return dao.newReply(r);
 	}
 }

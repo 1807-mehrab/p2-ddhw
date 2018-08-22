@@ -31,8 +31,9 @@ public class ResourceDao {
 		return r;
 	}
 	
-	public void newResource(Resource r) {
+	public Resource newResource(Resource r) {
 		Session s = sessionFactory.getCurrentSession();
 		s.save(r);
+		return r;
 	}
 }
