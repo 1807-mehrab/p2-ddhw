@@ -35,7 +35,7 @@ public class Reply {
 	@Override
 	public String toString() {
 		return "Reply [replyId=" + replyId + ", topicId=" + topic.getTopicId() + ", userId="
-				+ user.getUser().getUserId() + ", contentId=" + content.getContentId() + "]";
+				+ user.getUser() + ", contentId=" + content.getContentId() + "]";
 	}
 
 	public Reply(int replyId, Topic topic, UserProfile user, Resource content, int flag) {
