@@ -55,4 +55,13 @@ public class UserProfileDao {
 		return ui;
 	}
 
+	public boolean adminDeleteUser(String user) {
+		Session s = sessionFactory.getCurrentSession();
+		Object persistentInstance = s.load(UserProfile.class, user);
+	    if (persistentInstance != null) {
+	        s.delete(persistentInstance);
+	        return true;
+	    }
+		return false;
+	}
 }

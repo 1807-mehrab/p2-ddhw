@@ -33,8 +33,15 @@ public class UserProfileService {
 		return dao.newUserProfile(up);
 	}
 
+	@Transactional
 	public UserProfile authentication(UserProfile user_get) {
 		return dao.authenticate(user_get.getUser(), user_get.getUserpass());
+	}
+	
+//	admin delete users--
+	@Transactional
+	public Boolean deleteUser(UserProfile user) {
+		return dao.adminDeleteUser(user.getUser());
 	}
 	
 }

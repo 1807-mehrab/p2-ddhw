@@ -27,4 +27,10 @@ public class ReplyService {
 	public Reply newReply(Reply r) {
 		return dao.newReply(r);
 	}
+	
+//	admin can delete post--
+	@Transactional
+	public Boolean deleteReply(Reply reply) {
+		return dao.adminDeleteReply(reply.getReplyId());
+	}
 }

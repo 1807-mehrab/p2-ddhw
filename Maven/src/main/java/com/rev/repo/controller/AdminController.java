@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AdminController {
-//	1) admin can edit users
+
 //	2)  admin delete users
 //	3) admin can delete post
 //	4) admin can edit post
@@ -12,5 +12,5 @@ public class AdminController {
 //	6) create user accounts / admin account // radio to distinguish type
 //	7) view flagged post
 	
-	
+	//delete logic
 }

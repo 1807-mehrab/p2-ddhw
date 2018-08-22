@@ -29,4 +29,14 @@ public class ReplyDao {
 		s.save(r);
 		return r;
 	}
+	
+	public boolean adminDeleteReply(int reply) {
+		Session s = sessionFactory.getCurrentSession();
+		Object persistentInstance = s.load(Reply.class, reply);
+	    if (persistentInstance != null) {
+	        s.delete(persistentInstance);
+	        return true;
+	    }
+		return false;
+	}
 }
