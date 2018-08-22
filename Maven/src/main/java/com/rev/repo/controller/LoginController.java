@@ -26,7 +26,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<UserProfile> authenticator(@RequestBody UserLogin ul) {
 		UserProfile user_get = new UserProfile(ul);
-		UserProfile user_resp= ups.getOne(user_get);
+		UserProfile user_resp= ups.authentication(user_get);
 		return ResponseEntity.ok(user_resp);
 	}
 }

@@ -42,5 +42,18 @@ public class UserProfileDao {
 		s.save(up);
 		return up;
 	}
+
+	public UserProfile authenticate(String userId, String userpass) {
+		Session s = sessionFactory.getCurrentSession();
+		UserProfile ui = null;
+		List<UserProfile> users = s.createQuery("from UserProfile where USERID = :id and USERPASS = :pass").setString("id", userId).setString("pass", userpass).list();
+		
+		if (!users.isEmpty()) {
+			ui = users.get(0);
+		}
+		
+		return ui;
+	}
 	
+
 }
