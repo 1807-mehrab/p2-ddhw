@@ -1,0 +1,34 @@
+package com.rev.repo.dao;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.rev.repo.bean.Reply;
+import com.rev.repo.bean.Resource;
+import com.rev.repo.bean.Topic;
+import com.rev.repo.bean.UserProfile;
+
+@Transactional
+@Repository
+public class ReplyDao {
+	private SessionFactory sessionFactory;
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Reply> getReplies(int topicId) {
+		Session s = sessionFactory.getCurrentSession();
+		return s.createQuery("from Replies where TOPICID = :id").setInteger("id", topicId).list();
+	}
+	
+	public void newReply(int replyId, Topic topic, UserProfile user, Resource content) {
+		Session s = sessionFactory.getCurrentSession();
+		s.save(new Reply(replyId, topic, user, content));
+	}
+}
