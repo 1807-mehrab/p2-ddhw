@@ -32,5 +32,9 @@ public class UserProfileService {
 	public UserProfile newUserProfile(UserProfile up) {
 		return dao.newUserProfile(up);
 	}
+
+	public UserProfile authentication(UserProfile user_get) {
+		return dao.authenticate(user_get.getUser(), user_get.getUserpass());
+	}
 	
 }
