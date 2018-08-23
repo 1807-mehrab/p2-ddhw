@@ -28,7 +28,7 @@ public class TopicController {
 	}
 	
 	@PostMapping(value="/topics")
-	public ResponseEntity<Topic> postComment(@Validated @RequestBody Topic topic, Errors errors) {
+	public ResponseEntity<Topic> postTopic(@Validated @RequestBody Topic topic, Errors errors) {
 		if (errors.hasErrors()) {
 			return null;
 		}
@@ -36,7 +36,7 @@ public class TopicController {
 		return ResponseEntity.ok(topic);
 	}
 	
-	@GetMapping(value="/topics/users/{name}")
+	@GetMapping(value="/user/topics")
 	public ResponseEntity<List<Topic>> getUserAll(@PathVariable UserProfile user) {
 		List<Topic> topic = ts.getUserAll(user);
 		return ResponseEntity.ok(topic);

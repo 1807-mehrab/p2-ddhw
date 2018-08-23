@@ -30,7 +30,24 @@ public class ReplyService {
 	
 //	admin can delete post--
 	@Transactional
-	public Boolean deleteReply(Reply reply) {
+	public Boolean adminDeleteReply(Reply reply) {
 		return dao.adminDeleteReply(reply.getReplyId());
 	}
+	
+//	admin can edit post--
+	@Transactional
+	public void adminEditReply(Reply reply) {
+		dao.adminEditReply(reply.getReplyId(), reply.getContent());
+	}
+
+	public boolean flagReply(Reply r) {
+		return dao.flag(r.getReplyId());
+	}
+
+// admin view flagged--
+	public List<Reply> getFlaggedReply() {
+		return dao.getAllFlagged();
+	}
+	
+	
 }

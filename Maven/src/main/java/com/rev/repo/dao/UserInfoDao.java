@@ -7,7 +7,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.rev.repo.bean.Reply;
 import com.rev.repo.bean.UserInfo;
+import com.rev.repo.bean.UserProfile;
 
 @Transactional
 @Repository
@@ -19,7 +21,7 @@ public class UserInfoDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<UserInfo> getUserInfo() {
+	public List<UserInfo> getAllUserInfo() {
 		Session s = sessionFactory.getCurrentSession();
 		return s.createQuery("from UserInfo").list();
 	}
@@ -41,5 +43,12 @@ public class UserInfoDao {
 		Session s = sessionFactory.getCurrentSession();
 		s.save(ui);
 		return ui;
+	}
+
+	public UserInfo editUserInfo(String string, String email) {
+		Session s = sessionFactory.getCurrentSession();
+		Reply instance = s.load(UserInfo.class, string);
+		instance.setContent(email);
+		s.saveOrUpdate(instance);
 	}
 }

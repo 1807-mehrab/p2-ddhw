@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.rev.repo.bean.Reply;
 import com.rev.repo.bean.UserInfo;
 import com.rev.repo.dao.UserInfoDao;
 
@@ -20,7 +21,7 @@ public class UserInfoService {
 	
 	@Transactional
 	public List<UserInfo> getAll() {
-		return dao.getUserInfo();
+		return dao.getAllUserInfo();
 	}
 	
 	@Transactional
@@ -31,5 +32,10 @@ public class UserInfoService {
 	@Transactional
 	public UserInfo newUserInfo(UserInfo ui) {
 		return dao.newUserInfo(ui);
+	}
+	
+	@Transactional
+	public UserInfo userInfoEdit(UserInfo ui) {
+		return dao.editUserInfo(ui.getUserId().getUser() , ui.getEmail());
 	}
 }

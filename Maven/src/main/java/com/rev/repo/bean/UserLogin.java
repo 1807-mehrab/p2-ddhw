@@ -10,7 +10,7 @@ public class UserLogin {
 	private String userpass;
 
 	@JsonIgnore
-	private int adminInt = -1;
+	private int adminInt = 0;
 
 	public String getUser() {
 		return user;

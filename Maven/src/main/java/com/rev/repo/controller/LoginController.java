@@ -24,4 +24,11 @@ public class LoginController {
 		UserProfile user_resp = ups.authentication(user_get);
 		return ResponseEntity.ok(user_resp);
 	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	public ResponseEntity<UserProfile> signup(@RequestBody UserLogin ul) {
+		UserProfile user_get = new UserProfile(ul);
+		UserProfile user_resp = ups.newUserProfile(user_get);
+		return ResponseEntity.ok(user_resp);
+	}
 }

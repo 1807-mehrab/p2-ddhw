@@ -38,10 +38,18 @@ public class UserProfileService {
 		return dao.authenticate(user_get.getUser(), user_get.getUserpass());
 	}
 	
+	
+	
 //	admin delete users--
 	@Transactional
 	public Boolean deleteUser(UserProfile user) {
 		return dao.adminDeleteUser(user.getUser());
 	}
 	
+//	promote users to admin--
+	@Transactional
+	public void adminGrantAdmin(UserProfile user) {
+		dao.editAdmin(user.getUser());
+	}
+
 }
