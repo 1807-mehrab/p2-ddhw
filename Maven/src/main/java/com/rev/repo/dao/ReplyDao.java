@@ -2,10 +2,10 @@ package com.rev.repo.dao;
 
 import java.util.List;
 
-import javax.transaction.Transaction;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,7 +56,7 @@ public class ReplyDao {
 		Transaction tx = session.beginTransaction();
 		String hqlUpdate = "update REPLY set REPLYFLAG = 1 where REPLYID = :rid";
 		int updatedEntities = session.createQuery( hqlUpdate )
-		        .setString( "rid", replyId )
+		        .setString( replyId, "rid" )
 		        .executeUpdate();
 		tx.commit();
 		return false;

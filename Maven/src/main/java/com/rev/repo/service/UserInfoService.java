@@ -35,7 +35,7 @@ public class UserInfoService {
 	}
 	
 	@Transactional
-	public UserInfo userInfoEdit(UserInfo ui) {
-		return dao.editUserInfo(ui.getUserId().getUser() , ui.getEmail());
+	public void userInfoEdit(UserInfo ui) {
+		dao.editUserInfo(ui.getUserId().getUser() , ui.getEmail());
 	}
 }

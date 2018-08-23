@@ -1,5 +1,7 @@
 package com.rev.repo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;
@@ -18,8 +20,9 @@ public class LoginController {
 	@Autowired
 	private UserProfileService ups;
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/userprofiles", method = RequestMethod.POST)
 	public ResponseEntity<UserProfile> authenticator(@RequestBody UserLogin ul) {
+		System.out.println("you made it, " + ul.getUser() + "!");
 		UserProfile user_get = new UserProfile(ul);
 		UserProfile user_resp = ups.authentication(user_get);
 		return ResponseEntity.ok(user_resp);

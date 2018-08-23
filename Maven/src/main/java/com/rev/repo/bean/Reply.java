@@ -26,17 +26,11 @@ public class Reply {
 	private UserProfile user;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@Column(name = "CONTENTID")
+	@JoinColumn(name = "CONTENTID")
 	private Resource content;
 
 	@Column(name = "REPLYFLAG")
 	private int flag;
-
-	@Override
-	public String toString() {
-		return "Reply [replyId=" + replyId + ", topicId=" + topic.getTopicId() + ", userId="
-				+ user.getUser() + ", contentId=" + content.getContentId() + "]";
-	}
 
 	public Reply(int replyId, Topic topic, UserProfile user, Resource content, int flag) {
 		super();
@@ -91,4 +85,15 @@ public class Reply {
 	public void setFlag(int flag) {
 		this.flag = flag;
 	}
+	
+	@Override
+	public String toString() {
+		return "Reply "
+				+ "{replyId=" + replyId 
+				+ ", topicId=" + topic.getTopicId() 
+				+ ", userId=" + user.getUser() 
+				+ ", contentId=" + content.getContentId() 
+				+ "}";
+	}
 }
+

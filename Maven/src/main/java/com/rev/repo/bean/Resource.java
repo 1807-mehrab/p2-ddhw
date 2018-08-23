@@ -76,4 +76,14 @@ public class Resource {
 		this.document = document;
 	}
 
+	@Override
+	public String toString() {
+		return "Resource "
+				+ "{contentId=" + contentId 
+				+ ", text=" + text 
+				+ ", image=" + image 
+				+ ", video=" + video
+				+ ", document=" + document 
+				+ "}";
+	}
 }

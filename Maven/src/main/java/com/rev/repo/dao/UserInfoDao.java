@@ -45,10 +45,10 @@ public class UserInfoDao {
 		return ui;
 	}
 
-	public UserInfo editUserInfo(String string, String email) {
+	public void editUserInfo(String string, String email) {
 		Session s = sessionFactory.getCurrentSession();
-		Reply instance = s.load(UserInfo.class, string);
-		instance.setContent(email);
+		UserInfo instance = s.load(UserInfo.class, string);
+		instance.setEmail(email);
 		s.saveOrUpdate(instance);
 	}
 }
