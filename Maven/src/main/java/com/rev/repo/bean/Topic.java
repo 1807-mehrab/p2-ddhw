@@ -27,7 +27,7 @@ public class Topic {
 	private UserProfile user;
 	
 	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@Column(name = "CONTENTID")
+	@JoinColumn(name = "CONTENTID")
 	private Resource content;
 	
 	@Column(name = "TOPICLINE")
@@ -35,12 +35,6 @@ public class Topic {
 	
 	@Column(name = "TOPICFLAG")
 	private int flag;
-
-	@Override
-	public String toString() {
-		return "Topic [topicId=" + topicId + ", userId=" + user.getUser() + ", contentId=" + content.getContentId() + ", topicLine="
-				+ topicLine + "]";
-	}
 
 	public Topic(int topicId, UserProfile user, Resource content, String topicLine, int flag) {
 		super();
@@ -94,5 +88,16 @@ public class Topic {
 
 	public void setFlag(int flag) {
 		this.flag = flag;
+	}
+	
+	@Override
+	public String toString() {
+		return "Topic "
+				+ "{topicId=" + topicId 
+				+ ", userId=" + user.getUser() 
+				+ ", contentId=" + content.getContentId() 
+				+ ", topicLine="
+				+ topicLine 
+				+ "}";
 	}
 }

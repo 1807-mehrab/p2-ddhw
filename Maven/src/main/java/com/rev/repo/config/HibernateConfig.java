@@ -15,7 +15,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import com.rev.repo.dao.ReplyDao;
 import com.rev.repo.dao.ResourceDao;
 import com.rev.repo.dao.TopicDao;

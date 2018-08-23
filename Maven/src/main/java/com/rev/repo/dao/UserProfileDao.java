@@ -2,10 +2,9 @@ package com.rev.repo.dao;
 
 import java.util.List;
 
-import javax.transaction.Transaction;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -71,6 +70,7 @@ public class UserProfileDao {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		String hqlUpdate = "update UserProfile set ISADMIN = 1 where USERNAME = :userid";
+		@SuppressWarnings({ "deprecation", "unused" })
 		int updatedEntities = session.createQuery( hqlUpdate )
 		        .setString( "userid", user )
 		        .executeUpdate();

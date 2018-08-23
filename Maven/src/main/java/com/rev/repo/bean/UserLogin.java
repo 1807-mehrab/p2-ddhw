@@ -3,7 +3,7 @@ package com.rev.repo.bean;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
-@JsonRootName(value = "login")
+@JsonRootName(value = "userprofile")
 public class UserLogin {
 
 	private String user;
@@ -38,7 +38,11 @@ public class UserLogin {
 
 	@Override
 	public String toString() {
-		return "UserLogin [user=" + user + ", userpass=" + userpass + ", adminInt=" + adminInt + "]";
+		return "UserLogin "
+				+ "{user=" + user 
+				+ ", userpass=" + userpass 
+				+ ", adminInt=" + adminInt 
+				+ "}";
 	}
 
 }

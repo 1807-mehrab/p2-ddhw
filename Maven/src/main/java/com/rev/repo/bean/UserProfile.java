@@ -1,12 +1,8 @@
 package com.rev.repo.bean;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,8 +10,7 @@ import javax.persistence.Table;
 public class UserProfile {
 
 	@Id
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "USERID")
+	@Column(name = "USERID")
 	private String user;
 
 	@Column(name = "USERPASS")
@@ -29,11 +24,6 @@ public class UserProfile {
 			return false;
 		else
 			return true;
-	}
-
-	@Override
-	public String toString() {
-		return "UserProfile [user=" + user + ", userpass=" + userpass + ", adminInt=" + adminInt + "]";
 	}
 
 	public UserProfile(UserLogin ul) {
@@ -74,5 +64,14 @@ public class UserProfile {
 
 	public void setUser(String user) {
 		this.user = user;
+	}
+	
+	@Override
+	public String toString() {
+		return "UserProfile "
+				+ "{user=" + user 
+				+ ", userpass=" + userpass 
+				+ ", adminInt=" + adminInt 
+				+ "}";
 	}
 }
