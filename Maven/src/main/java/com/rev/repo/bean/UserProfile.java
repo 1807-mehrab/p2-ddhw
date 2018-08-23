@@ -75,5 +75,4 @@ public class UserProfile {
 	public void setUser(String user) {
 		this.user = user;
 	}
-
 }

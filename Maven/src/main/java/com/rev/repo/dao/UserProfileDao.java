@@ -2,6 +2,8 @@ package com.rev.repo.dao;
 
 import java.util.List;
 
+import javax.transaction.Transaction;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -63,5 +65,15 @@ public class UserProfileDao {
 	        return true;
 	    }
 		return false;
+	}
+
+	public void editAdmin(String user) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		String hqlUpdate = "update UserProfile set ISADMIN = 1 where USERNAME = :userid";
+		int updatedEntities = session.createQuery( hqlUpdate )
+		        .setString( "userid", user )
+		        .executeUpdate();
+		tx.commit();
 	}
 }
