@@ -5,7 +5,7 @@ export default DS.RESTSerializer.extend({
     
     normalizeResponse(store, primaryModelClass, payload, id, requestType) {
         console.log(payload);
-        payload = {'userprofile': payload };
+        payload = {'UserProfile': payload };
         console.log(payload);
         return this._super(store, primaryModelClass, payload, id, requestType);
         

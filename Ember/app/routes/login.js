@@ -7,11 +7,17 @@ export default Route.extend({
             console.log(uPass)
             var self = this
             this.get('store').unloadAll('userprofile')
-            this.get('store').createRecord('userprofile', {
-                user: uName,
-                userpass: uPass,
-                adminInt: '0'
-            }).save().then(
+            this.get('store').push({
+                data: {
+                    id: 1,
+                    type: 'userprofile',
+                    attributes: {
+                        user: uName,
+                        userpass: uPass,
+                        adminInt: 0
+                    }
+                }
+            })/**.save().then(
                 (function() {
                     self.transitionTo('users');
                 }),
@@ -19,9 +25,9 @@ export default Route.extend({
                     self.get('store').unloadAll('userposter');
                     self.refresh;
                 })
-            )
+            )*/
             
-            //this.transitionTo('users.profile')
+            this.transitionTo('users.profile')
         }
     }
 });

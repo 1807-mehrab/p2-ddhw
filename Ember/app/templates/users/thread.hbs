@@ -1,0 +1,18 @@
+<div>
+    <div>{{model.topic.topicline}}</div>
+    <div>posted by {{model.topic.userid}}</div>
+    <div>{{model.tpcresource.text}}</div>
+    <button>Flag</button>
+</div>
+
+{{#each model.replies as |reply|}}
+<div>
+    {{!--
+    {{#with (lookup model.resources @index) as resource}}
+        <div>{{resource.text}}</div>
+    {{/with}}
+    --}}
+    <div>posted by {{reply.userid}}</div>
+    <button>Flag</button>
+</div>
+{{/each}}

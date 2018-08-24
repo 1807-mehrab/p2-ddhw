@@ -1,3 +1,22 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color:dimgray">
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+                <img src="/assets/images/icon.png" style="width:5%"> 
+                <a class="navbar-brand" href="#">4U Forum</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"></button>
+        </div>
+       
+        <div>
+                <h3><button class="button" {{action "logOut"}}>Logout</button></h3>
+        </div>
+
+</nav>
+
+<br>
+<br>
+<br>
+<br>
+
         <div>
         {{#link-to "users.topics"}}
             Topics
@@ -10,14 +29,11 @@
         {{/link-to}}
         </div>
 
-        <div>
-            Logout
-        </div>
-
-
-
-<p>Header</p>
-
 {{outlet}}
 
+<nav class="navbar navbar-expand-md navbar-dark fixed-bottom" style="background-color:dimgray">
 <p>Footer</p>
+</nav>
+       
+       
+       
