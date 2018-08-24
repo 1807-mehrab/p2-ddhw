@@ -1,11 +1,9 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-    model() {
-        return (this.get('store').peekRecord('userprofile', 1));
-    },
     actions: {
         makeTopics: function() {
+            console.log("making")
             this.get('store').push({
                 data: [
                     {
@@ -13,7 +11,7 @@ export default Route.extend({
                         type: 'topic',
                         attributes: {
                             topicid: 1,
-                            userid: "meme",
+                            userid: "softwaredev123",
                             contentid: 1,
                             topicline: "This is the first ever topic!",
                             topicflagged: 0
@@ -24,7 +22,7 @@ export default Route.extend({
                         type: 'topic',
                         attributes: {
                             topicid: 2,
-                            userid: "meme",
+                            userid: "iwannalearn22",
                             contentid: 2,
                             topicline: "This is the second ever topic! Isn't that amazing?",
                             topicflagged: 0
@@ -33,8 +31,11 @@ export default Route.extend({
                 ]
             })
         },
-        getTopics: function() {
-            return this.get('store').findAll('topic')
+
+        logOut: function() {
+            this.get('store').unloadAll('userprofile')
+            this.transitionTo('login')
         }
+
     }
 });

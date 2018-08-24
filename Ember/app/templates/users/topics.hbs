@@ -1,9 +1,10 @@
 <p>TOPICS</p>
 <p>this is where topics go...</p>
-{{#each getTopics as |topic|}}
+
+{{#each model as |topic|}}
 <div>
-    <div>{{topic.TopicLine}}</div>
-    <div>{{topic.UserID}}</div>
-    <button>View</button> <button>Flag</button>
+    <div>{{topic.topicline}}</div>
+    <div>posted by {{topic.userid}}</div>
+    <button>{{#link-to "users.thread" topic.topicid}}View{{/link-to}}</button> <button>Flag</button>
 </div>
 {{/each}}

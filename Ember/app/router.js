@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('users', {path: '/app'}, function() {
     this.route('topics');
     this.route('profile');
+    this.route('thread', { path : 'topic/:topicid'});
   });
   this.route('login', {path: '/'});
 });

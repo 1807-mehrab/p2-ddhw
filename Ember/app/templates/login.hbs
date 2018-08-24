@@ -1,4 +1,49 @@
-{{input value=UserName}}
-{{input value=UserPass}}
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color:dimgray">
+<hr class="featurette-divider">
+<div class="collapse navbar-collapse" id="navbarCollapse">
+    <img src="/assets/images/icon.png" style="width:5%"> 
+<a class="navbar-brand" href="#">4U Forum</a>
 
-<p><button {{action "logIn" UserName UserPass}}>Log in</button></p>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"></button>
+</div>
+<h5>Username : </h5> {{input value=UserName}}
+<h5>Password : </h5>{{input value=UserPass}}
+
+<h3><button class="button" {{action "logIn" UserName UserPass}}>Login</button></h3>
+<hr class="featurette-divider">
+</nav>
+<br>
+<br>
+<br>
+
+
+<br>
+<h1>Learn the Technologies</h1>
+<div class="row">
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="/assets/images/ember.png" width="140" height="140">
+            <h2>Ember.js</h2>
+            <p>Ember.js is an open-source JavaScript web framework, based on the Model–view–viewmodel (MVVM) pattern. It allows developers to create scalable single-page web applications by incorporating common idioms and best practices into the framework.</p>
+          </div><!-- /.col-lg-4 -->
+
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="/assets/images/tomcat.png" width="140" height="140">
+            <h2>Pass Infomation</h2>
+            <p>Apache Tomcat is an open-source Java Servlet Container developed by the Apache Software Foundation (ASF). Tomcat implements several Java EE specifications including Java Servlet, JavaServer Pages (JSP), Java EL, and WebSocket, and provides a "pure Java" HTTP web server environment in which Java code can run. </p>
+          </div><!-- /.col-lg-4 -->
+
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="/assets/images/spring.png" width="140" height="140">
+            <h2>Back End Development</h2>
+            <p>The Spring Framework is an application framework and <strong>IOC</strong> container for the Java platform. The framework's core features can be used by any Java application, but there are extensions for building web applications on top of the Java EE (Enterprise Edition) platform.</p>
+          </div><!-- /.col-lg-4 -->
+          
+        </div>
+        <hr class="featurette-divider">
+        <hr class="featurette-divider">
+<nav class="navbar navbar-expand-md navbar-dark fixed-bottom" style="background-color:dimgray">
+<p></p>
+</nav>
+
+
+
